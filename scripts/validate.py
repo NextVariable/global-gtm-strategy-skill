@@ -29,7 +29,11 @@ def check_structure():
     links = 0
     # Historical outputs are retained, so broken archive links are also findings.
     for file in sorted(ROOT.rglob("*.md")):
-        if any(part in {".git", ".validation-output", "growth-workspaces"} for part in file.parts):
+        if any(
+            part
+            in {".git", ".validation-output", "growth-workspaces", "local-audits", "__pycache__"}
+            for part in file.parts
+        ):
             continue
         content = re.sub(r"```.*?```", "", file.read_text(encoding="utf-8"), flags=re.S)
         for target in re.findall(r"\[[^\]\n]+\]\(([^)]+)\)", content):

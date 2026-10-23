@@ -1,72 +1,97 @@
-# Global GTM Strategy · 海外市场研究与 GTM 战略
+![Global GTM Strategy — five independent growth skills](docs/assets/cover.svg)
 
-[![Validation / 自动验证](https://github.com/NextVariable/global-gtm-strategy-skill/actions/workflows/validate.yml/badge.svg)](https://github.com/NextVariable/global-gtm-strategy-skill/actions/workflows/validate.yml) · [MIT](LICENSE) · [中文](#中文) · [English](#english)
+# Global GTM Strategy
 
-## 中文
+**海外市场研究与 GTM 战略 · 判断出海先进入哪个市场、服务谁，以及用什么方式获得首批付费客户。**
 
-帮助产品团队决定出海先进入哪个市场、服务哪类客户、凭什么被选择，以及如何触达首批付费客户。适用于新产品的市场切入，也适用于已有海外业务的增长瓶颈分析。
+[![Validate](https://github.com/NextVariable/global-gtm-strategy-skill/actions/workflows/validate.yml/badge.svg)](https://github.com/NextVariable/global-gtm-strategy-skill/actions/workflows/validate.yml) [![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Agent Skills](https://img.shields.io/badge/Agent_Skills-compatible-6e56cf.svg)](https://agentskills.io/specification)
 
-研究给出目标市场与客户、价值主张、竞争取舍、优先渠道、购买路径和下一步验证。关键建议附来源、反对证据及调整条件；缺少真实购买数据、成本或币种时明确保留未知，不用行业模板补数。本技能负责研究与策略设计，实际获客、销售、投放和实验执行需另行开展。
+[快速开始](#quick-start) · [任务示例](examples/first-task.md) · [方法](#method) · [验证](#validation) · [五个 Skill 合集](https://github.com/NextVariable/global-growth-skills)
 
-### 安装与使用
+输入 **产品、客户与替代方案、已有访谈或购买记录、预算与交付能力**，得到 **优先市场与客户、价值主张、进入路径、下一项验证**。可以独立使用；已有项目资料或其他 Skill 的交接都能直接接入。指令以中文编写，对客产物按目标受众选择语言。
 
-将完整的 [Skill 目录](skills/global-gtm-strategy-skill/)复制到支持 Agent Skills 的客户端。Codex 示例：
+## In practice
 
-```bash
+> 先服务能接受手动 CSV 的美国小品牌，从已付款试点的下一次真实任务验证复购。暂缓需要跨店权限、自动同步或本地托管的客户。
+>
+> 每月 12 小时支持，先给两家各最多 4 小时，另留 4 小时缓冲；一次 99 美元试点不等于订阅留存。
+
+以上是合成任务的结果节选。[查看输入和完整任务说明 →](examples/first-task.md)
+
+## Quick start
+
+在你的项目目录运行，选择要安装到的客户端：
+
+```sh
+npx skills add NextVariable/global-gtm-strategy-skill --skill global-gtm-strategy-skill
+```
+
+需要跨项目使用时加 `-g`。此安装方式需要 Node.js 22.20+；也可以直接复制技能目录。
+
+<details>
+<summary>手动安装到 Codex（Git；已有目录时停止）</summary>
+
+```sh
 git clone https://github.com/NextVariable/global-gtm-strategy-skill.git
 cd global-gtm-strategy-skill
-mkdir -p ~/.agents/skills
-cp -R skills/global-gtm-strategy-skill ~/.agents/skills/
+mkdir -p "$HOME/.agents/skills"
+target="$HOME/.agents/skills/global-gtm-strategy-skill"
+if [ -e "$target" ] || [ -L "$target" ]; then
+  echo "Already exists: $target"
+else
+  cp -R skills/global-gtm-strategy-skill "$target"
+fi
 ```
 
-重新加载客户端后调用 `$global-gtm-strategy-skill`。已有同名技能时先核对版本。技能使用客户端已有的搜索、浏览和文件工具；辅助脚本需要 Python 3.10+，仅使用标准库，无需额外服务或密钥。
+完整保留 `skills/global-gtm-strategy-skill/` 内的方法、模板和许可。已有同名目录时先保存旧版及个人修改，再比较版本；不要把两份目录直接合并。其他客户端使用其配置的 Skill 目录。
+
+</details>
+
+重新加载客户端后调用 `$global-gtm-strategy-skill`。方法通过客户端工具工作；可选计算/状态脚本使用 Python 3.10+ 标准库。
 
 ```text
-使用 $global-gtm-strategy-skill。我们做团队会议工具，目前只有云版，
-有三个已付款试点，团队能用英语支持，每月只有 40 小时服务产能。
-根据我提供的访谈、成本和购买记录，判断先服务哪类客户，
-并设计一项最可能改变这个选择的验证。
+使用 $global-gtm-strategy-skill。
+产品与当前阶段：……
+这次要解决：……
+已确认的能力、材料和限制：……
+可投入的时间、预算与人员：……
+请完成我需要的产物；未知的关键条件明确说明。
 ```
 
-提供有权使用的产品资料、当前决定和资源约束即可。持续研究的业务资料保存在技能目录之外，按客户、产品和项目区分，见[证据与恢复](skills/global-gtm-strategy-skill/references/evidence-and-state.md)。
+项目资料保存在你自己的工作目录，安装包只放通用方法。实际外发、发布、支出或客户系统操作依赖相应工具和授权。
 
-### 验证与许可证
+## Method
 
-运行 `python3 scripts/validate.py` 检查结构、账本与数值计算。持续集成覆盖 Linux、macOS、Windows；模拟案例和自动检查不证明真实增长效果。[验证索引](validation/README.md)说明检查范围与已知局限，[架构说明](docs/architecture.md)说明维护边界。
+入口只保留任务判断和必要边界，按需加载相关方法，不要求每次读完或跑完整个流程。
 
-项目采用 [MIT 许可证](LICENSE)。适用的第三方许可证见[许可声明](THIRD_PARTY_NOTICES.md)。
+| 方法 | 解决什么 |
+|---|---|
+| [市场与细分](skills/global-gtm-strategy-skill/references/market-selection.md) | 比较客户任务、可达性、进入条件和淘汰理由 |
+| [客户与需求](skills/global-gtm-strategy-skill/references/customer-research.md) | 招募访谈、观察真实工作、区分使用者与付款者 |
+| [竞争与替代](skills/global-gtm-strategy-skill/references/alternatives.md) | 还原当前做法、切换成本与增长路径 |
+| [商业机会](skills/global-gtm-strategy-skill/references/opportunity.md) | 检查收入口径、单位经济、服务产能和现金约束 |
+| [进入策略](skills/global-gtm-strategy-skill/references/entry-strategy.md) | 把定位、触达、评估、购买和验证连起来 |
+
+## Validation
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate.py
+```
+
+[验证说明](validation/README.md)区分结构与记录检查、计算测试、模型任务和真实业务结果。自动检查不替代语义审阅；合成试用不能证明获客、收入或留存提升。客户端实际加载、目标用户理解和业务效果应在自己的环境验证。
+
+## Ecosystem
+
+[01 市场战略](https://github.com/NextVariable/global-gtm-strategy-skill) → [02 定位内容](https://github.com/NextVariable/global-growth-content-skill) → [03 发布获客](https://github.com/NextVariable/global-launch-acquisition-skill) → [04 客户增长](https://github.com/NextVariable/global-sales-retention-skill) → [05 实验复盘](https://github.com/NextVariable/global-growth-experiments-skill)
+
+五个独立仓库，按当前问题选用。共享产品背景、证据与版本，结果可以回到前面的决策；其他四个不是安装依赖。
+
+## Contributing
+
+改进建议请带一个具体任务、期望结果和实际问题。开发、检查与提交方式见 [CONTRIBUTING.md](CONTRIBUTING.md)；功能问题可提交 [Issue](https://github.com/NextVariable/global-gtm-strategy-skill/issues/new/choose)。
 
 ## English
 
-Help product teams decide which international market to enter, whom to serve, why customers would choose the product, and how to reach the first paying customers. Use it for a new product’s market entry or to investigate growth bottlenecks in an existing overseas business.
+Choose an international market and customer segment, understand alternatives and buying roles, and design the next validation. Research and strategy, with explicit evidence and resource constraints. Install the complete skill directory and invoke `$global-gtm-strategy-skill`. Instructions are Chinese-first; deliverables follow the target audience. Model and external tools are supplied by your client.
 
-The research identifies target markets and customers, value propositions, competitive trade-offs, priority channels, buying journeys, and the next validation step. Key recommendations include sources, opposing evidence, and conditions for revision. Missing purchase data, costs, or currencies remain unknown. The skill handles research and strategy design; acquisition, sales, advertising, and experiment execution require separate work.
-
-### Installation and usage
-
-Copy the entire [skill directory](skills/global-gtm-strategy-skill/) into a client supporting Agent Skills. For Codex:
-
-```bash
-git clone https://github.com/NextVariable/global-gtm-strategy-skill.git
-cd global-gtm-strategy-skill
-mkdir -p ~/.agents/skills
-cp -R skills/global-gtm-strategy-skill ~/.agents/skills/
-```
-
-Reload the client and invoke `$global-gtm-strategy-skill`. Check the version before replacing an existing installation. The skill uses the client’s search, browsing, and file tools. Helper scripts require Python 3.10+ and only the standard library; no additional services or credentials are needed.
-
-```text
-Use $global-gtm-strategy-skill. We build a team meeting tool, currently cloud-only.
-We have three paid pilots, can provide support in English, and have only
-40 hours of service capacity per month. Based on the interviews, costs,
-and purchase records I provide, identify the customer segment to serve
-first and design a test most likely to change that choice.
-```
-
-Provide product materials you are authorized to use, the decision at hand, and resource constraints. For ongoing research, store business data outside the skill directory and separate it by client, product, and project; see [evidence and resumption](skills/global-gtm-strategy-skill/references/evidence-and-state.md).
-
-### Validation and license
-
-Run `python3 scripts/validate.py` to check structure, ledgers, and calculations. CI covers Linux, macOS, and Windows. Synthetic cases and automated checks do not demonstrate real growth outcomes. The [validation index](validation/README.md) describes check coverage and known limitations; [architecture](docs/architecture.md) describes maintenance boundaries.
-
-The project is licensed under [MIT](LICENSE). See [third-party notices](THIRD_PARTY_NOTICES.md) for applicable third-party licenses.
+[MIT](LICENSE). 适用第三方许可保存在[许可声明](THIRD_PARTY_NOTICES.md)中。
