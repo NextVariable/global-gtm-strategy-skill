@@ -12,6 +12,6 @@ The project’s own content is licensed under [MIT](../LICENSE). Bundled third-p
 
 `reference-d.txt` 保留 Copyright (c) 2025 Corey Haines / MIT，可对照 [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE)；`reference-e.txt` 保留 Copyright (c) 2026 Pawel Huryn / MIT，可对照 [phuryn/pm-skills](https://github.com/phuryn/pm-skills/blob/main/LICENSE)。本次确认对应许可证文本，不把作者一致当作具体复用文件或导入提交的完整证明。
 
-`reference-c.txt` 是已随包分发的 Apache-2.0 全文。现有材料不足以确定它的上游仓库、作者、NOTICE 与具体引用范围，因此原样保留，不能猜测归属或宣称已完成全部许可核验。后续如识别出实际 Apache 衍生材料，仍须逐项核对版权、NOTICE 与改动标记要求。
+`reference-c.txt` 对应 [GPT Researcher](https://github.com/assafelovic/gpt-researcher/tree/0957c301ed06c2a5857b834358c7227c739041d4)，历史研究版本为 `0957c301ed06c2a5857b834358c7227c739041d4`。2026-10-28 从本地历史研究清单恢复其文件路径、版本及哈希，并从上游重新核对：LICENSE 的 SHA-256 为 `c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4`，与随包文本逐字节一致；该提交完整文件树中没有 NOTICE 文件。历史研究涉及其研究、抓取、写作与评测机制，不表示本包依赖或执行其代码。原 Apache-2.0 许可保留；具体衍生材料仍按实际复用范围处理，不能将机制学习等同于逐文件代码复制。
 
 这些声明记录真实的参考与许可背景，不表示全部运行文本来自这些作者，也不构成全部独立原创的声明。所有现存第三方许可全文保持原样；本次长片段比对无命中，不能排除改写、翻译或结构借鉴。
