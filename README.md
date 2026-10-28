@@ -95,3 +95,5 @@ PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate.py
 Choose an international market and customer segment, understand alternatives and buying roles, and design the next validation. Research and strategy, with explicit evidence and resource constraints. Install the complete skill directory and invoke `$global-gtm-strategy-skill`. Instructions are Chinese-first; deliverables follow the target audience. Model and external tools are supplied by your client.
 
 [MIT](LICENSE). 适用第三方许可保存在[许可声明](THIRD_PARTY_NOTICES.md)中。
+
+维护与更新：[变更记录](CHANGELOG.md) · [升级与回退](docs/upgrading.md) · [安全问题反馈](SECURITY.md)。
